@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title> About | Bristol Community Events </title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/BCE_about_style.css') }}">
+    </head>
+
+    <body>
+        <header>
+            <div class="logo">
+                <img src="{{ url_for('static', filename='images/BCE_logo.png') }}" alt="BCE Logo">
+                <h2> Bristol Community Events </h2>
+            </div>
+
+            <nav>
+                <a href="{{ url_for('home') }}"> Home </a>
+                <a href="{{ url_for('events') }}"> Workshops </a>
+                <a href="{{ url_for('about') }}" class="event"> About </a>
+                <a href="{{ url_for('contact') }}"> Contact </a>
+                <a href="{{ url_for('update_password') }}"> Update Password </a>
+                {% if session.get('user_id') %}
+                  <a href="{{ url_for('logout') }}"> Logout </a>
+                {% else %}
+                  <a href="{{ url_for('login') }}"> Login </a>
+                {% endif %}
+            </nav>
+        </header>
+
+        <section class="page-header">
+            <h1> About Bristol Community Events </h1>
+            <p> Bringing creativity and connection together through community workshops and events in Bristol. </p>
+        </section>
+
+        <main>
+            <section class="about-section">
+                <h2> Our Story </h2>
+                <p> Bristol Community Events (BCE) was founded with the mission of connecting people through creativity. Our community-driven workshops — from pottery and candle making to crochet and drawing — are designed to inspire people of all ages to learn, share, and create together. </p>
+                <p> We believe art and craft are powerful tools for wellbeing and connection. Whether you’re joining us for your first workshop or returning to share your skills, BCE provides a welcoming space for everyone to explore their creativity. </p>
+            </section>
+
+            <section class="mission-section">
+                <h2> Our Mission </h2>
+                <ul>
+                    <li>🌿 Foster creativity and sustainability through handmade workshops. </li>
+                    <li>💬 Build community connections across Bristol and beyond. </li>
+                    <li>🎨 Make learning accessible, fun, and inclusive for everyone. </li>
+                </ul>
+            </section>
+        </main>
+
+        <footer>
+            <p> &copy; Bristol Community Event Project by Thiri Win &hearts; </p>
+        </footer>
+    </body>
+</html>

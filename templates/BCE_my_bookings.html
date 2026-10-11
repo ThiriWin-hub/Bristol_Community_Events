@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title> My Bookings </title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/BCE_contact_style.css') }}">
+    </head>
+
+    <body>
+        <header>
+            <div class="logo">
+                <img src="{{ url_for('static', filename='images/BCE_logo.png') }}" alt="BCE Logo">
+                <h2> Bristol Community Events </h2>
+            </div>
+
+            <nav>
+                <a href="{{ url_for('home') }}"> Home </a>
+                <a href="{{ url_for('events') }}"> Workshops </a>
+                <a href="{{ url_for('my_bookings') }}" class="event"> My Bookings </a>
+                <a href="{{ url_for('about') }}"> About </a>    
+                <a href="{{ url_for('contact') }}"> Contact </a>
+                <a href="{{ url_for('update_password') }}"> Update Password </a>
+                <a href="{{ url_for('logout') }}"> Logout </a>
+            </nav>
+        </header>
+
+        <main>
+            <section class="page-header">
+                <h1> My Bookings </h1>
+                <p> Here are your workshop bookings. </p>
+            </section>
+
+            <section class="contact-section">
+                <div class="container bookings-container">
+                    {% if bookings %}
+                <div class="table-wrapper">
+                    <table class="booking-table">
+                        <tr>
+                            <th> Booking ID </th>
+                            <th> Workshop </th>
+                            <th> Event Date </th>
+                            <th> Booked </th>
+                            <th> Status </th>
+                            <th> Amount </th>
+                            <th> Action </th>
+                        </tr>
+
+                        {% for booking in bookings %}
+                        <tr>
+                            <td>{{ booking.BookingID }}</td>
+                            <td>{{ booking.EventName }}</td>
+                            <td>{{ booking.EventDate }}</td>
+                            <td>{{ booking.BookingDate }}</td>
+                            <td class="{% if booking.BookingStatus == 'Cancelled' %}cancelled-status{% elif booking.BookingStatus == 'Confirmed' %}confirmed-status{% else %}pending-status{% endif %}">
+                                {{ booking.BookingStatus }}
+                            </td>
+                            <td>£{{ booking.FinalAmount }}</td>
+                            <td>
+                                {% if booking.BookingStatus == 'Confirmed' %}
+                                    <a href="{{ url_for('cancel_booking', booking_id=booking.BookingID) }}" class="btn"> Cancel </a>
+                                
+                                {% elif booking.BookingStatus == 'Pending' %}
+                                <a href="{{ url_for('payment', booking_id=booking.BookingID) }}" class="btn"> Pay Now </a>
+
+                                {% else %}
+                                    Cancelled
+                                {% endif %}
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </table>
+                </div>
+                {% else %}
+                    <h2> No bookings yet </h2>
+                    <p> You have not booked any workshops yet. </p>
+                    <a href="{{ url_for('events') }}" class="btn"> Go to Workshops </a>
+                {% endif %}
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <p> &copy; Bristol Community Event Project by Thiri Win &hearts; </p>
+        </footer>
+    </body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title> Free Workshop Locked </title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/BCE_contact_style.css') }}">
+    </head>
+
+    <body>
+        <header>
+            <div class="logo">
+                <img src="{{ url_for('static', filename='images/BCE_logo.png') }}" alt="BCE Logo">
+                <h2> Bristol Community Events </h2>
+            </div>
+
+            <nav>
+                <a href="{{ url_for('home') }}"> Home </a>
+                <a href="{{ url_for('events') }}" class="event"> Workshops </a>
+                <a href="{{ url_for('about') }}"> About </a>
+                <a href="{{ url_for('contact') }}"> Contact </a>
+                <a href="{{ url_for('update_password') }}"> Update Password </a>
+                {% if session.get('user_id') %}
+                  <a href="{{ url_for('logout') }}"> Logout </a>
+                {% else %}
+                  <a href="{{ url_for('login') }}"> Login </a>
+                {% endif %}
+            </nav>
+        </header>
+
+        <main>
+            <section class="page-header">
+                <h1> Free Workshop Locked </h1>
+                <p> Please book a paid workshop first. </p>
+            </section>
+
+            <section class="contact-section">
+                <div class="container">
+                    <h2> Unlock Required </h2>
+                    <p> You need to book one paid workshop before accessing a free workshop. </p>
+                    <a href="{{ url_for('events') }}" class="btn"> Back to Workshops </a>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <p> &copy; Bristol Community Event Project by Thiri Win &hearts; </p>
+        </footer>
+    </body>
+</html>

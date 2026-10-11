@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title> Contact Us </title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/BCE_contact_style.css') }}">   
+    </head>
+    
+    <body>
+        <header>
+            <div class="logo">
+                <img src="{{ url_for('static', filename='images/BCE_logo.png') }}" alt="BCE Logo">
+                <h2> Bristol Community Events </h2>
+            </div>
+
+            <nav>
+                <a href="{{ url_for('home') }}"> Home </a>
+                <a href="{{ url_for('events') }}"> Workshops </a>
+                <a href="{{ url_for('about') }}"> About </a>
+                <a href="{{ url_for('contact') }}" class="event"> Contact </a>
+                <a href="{{ url_for('update_password') }}"> Update Password </a>
+                {% if session.get('user_id') %}
+                  <a href="{{ url_for('logout') }}"> Logout </a>
+                {% else %}
+                  <a href="{{ url_for('login') }}"> Login </a>
+                {% endif %}
+            </nav>
+        </header>
+
+        <main>
+            <section class="page-header">
+                <h1> Contact Us </h1>
+                <p> We would love to hear from you! Please fill out the form below to reach our team. </p>
+            </section>
+
+            <section class="contact-section">
+                <div class="container">
+                    <form action="{{ url_for('submit_contact') }}" method="post">
+                        <label for="firstname"> First Name </label>
+                        <input type="text" id="firstname" name="firstname" placeholder="Your first name..." required>
+
+                        <label for="lastname"> Last Name </label>
+                        <input type="text" id="lastname" name="lastname" placeholder="Your last name..." required>
+
+                        <label for = "email"> Email </label>
+                        <input type = "email" id = "email" name = "email" placeholder = "Your email..." required>
+
+                        <label for="country"> Country </label>
+                        <input type="text" id="country" name="country" placeholder="Your country.." required>
+
+                        <label for="subject"> Subject </label>
+                        <textarea id="subject" name="subject" placeholder="Leave a message.." rows="6" required></textarea>
+
+                        <input type="submit" value="Submit">
+                    </form>
+                </div> 
+            </section>
+        </main>
+
+        <!-- Footer -->
+         <footer>
+            <p> &copy; Bristol Community Event Project by Thiri Win &hearts;</p>
+         </footer>
+
+         <script src = "{{ url_for('static', filename = 'java/BCE_contact.js') }}"></script>
+    </body>
+</html>

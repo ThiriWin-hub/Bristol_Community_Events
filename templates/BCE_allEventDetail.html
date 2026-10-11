@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title> All Workshops Events </title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/BCE_allEventDetail_style.css') }}">
+    </head>
+
+    <body>
+        <header>
+            <div class="logo">
+                <img src="{{ url_for('static', filename='images/BCE_logo.png') }}" alt="BCE Logo">
+                <h2> Bristol Community Events </h2>
+            </div>
+
+            <nav>
+                <a href="{{ url_for('home') }}"> Home </a>
+                <a href="{{ url_for('events') }}" class="event"> Workshops </a>
+                <a href="{{ url_for('about') }}"> About </a>
+                <a href="{{ url_for('contact') }}"> Contact </a>
+                <a href="{{ url_for('update_password') }}"> Update Password </a>
+                {% if session.get('user_id') %}
+                    <a href="{{ url_for('logout') }}"> Logout </a>
+                {% else %}
+                    <a href="{{ url_for('login')}}"> Login </a>
+                {% endif %}
+            </nav>
+        </header>
+
+        <main>
+            <section class="page-header">
+                <h1> All Workshops Events </h1>
+                <p> Let's Explore all creative workshops happening in Bristol Community </p>
+            </section>
+
+            <section class="event-grid">
+                <div class="event-card">
+                    <img src="{{ url_for('static', filename='images/origami_workshop.jpg') }}" alt="Origami Workshop">
+                    <h3> Origami Workshop </h3>
+                    <p> Learn creative paper folding techniques in a fun hands-on session. </p>
+                    <p class="price"> £15.00 </p>
+                    <a href="{{ url_for('booking', event_id=1) }}" class="btn"> Book Now </a>
+                </div>
+
+                <div class="event-card">
+                    <img src="{{ url_for('static', filename='images/drawing_workshop.jpg') }}" alt="Drawing Workshop">
+                    <h3> Drawing Workshop </h3>
+                    <p> Join us for a fun and creative drawing workshop where you can explore your artistic side!</p>
+                    <p class="price"> £20.00 </p>
+                    <a href="{{ url_for('booking', event_id=2) }}" class="btn"> Book Now </a>
+                </div>
+
+                <div class="event-card">
+                    <img src="{{ url_for('static', filename='images/candle_workshop.jpg') }}" alt="Candle Craft Workshop">
+                    <h3> Candle Craft Workshop </h3>
+                    <p> Discover the art of candle making in this hands-on workshop where you can create your own unique candles! </p>
+                    <p class="price"> £25.00 </p>
+                    <a href="{{ url_for('booking', event_id=3) }}" class="btn"> Book Now </a>
+                </div>
+
+                <div class="event-card">
+                    <img src="{{ url_for('static', filename='images/woodcarving_workshop.jpg') }}" alt="Wood Carving Workshop">
+                    <h3> Wood Carving Workshop </h3>
+                    <p> Discover the art of wood carving in this hands-on workshop where you can create your own unique pieces! </p>
+                    <p class="price"> £30.00 </p>
+                    <a href="{{ url_for('booking', event_id=4) }}" class="btn"> Book Now </a>
+                </div>
+
+                <div class="event-card">
+                    <img src="{{ url_for('static', filename='images/soap_workshop.jpg') }}" alt="Soap Making Workshop">
+                    <h3> Soap Making Workshop </h3>
+                    <p> Learn the art of soap making in this hands-on workshop where you can create your own unique soaps! </p>
+                    <p class="price"> £30.00 </p>
+                    <a href="{{ url_for('booking', event_id=5) }}" class="btn"> Book Now </a>
+                </div>
+
+                <div class="event-card">
+                    <img src="{{ url_for('static', filename='images/pottery_workshop.jpg') }}" alt="Pottery Workshop">
+                    <h3> Pottery Workshop </h3>
+                    <p> Join us for a hands-on pottery workshop where you can create your own ceramic masterpiece! </p>
+                    <p class="price"> £35.00 </p>
+                    <a href="{{ url_for('booking', event_id=6) }}" class="btn"> Book Now </a>
+                </div>
+
+                <div class="event-card">
+                    <img src="{{ url_for('static', filename='images/jewellery_workshop.jpg') }}" alt="Jewellery Workshop">
+                    <h3> Jewellery Workshop </h3>
+                    <p> Discover the art of jewellery making in this hands-on workshop where you can create your own unique pieces! </p>
+                    <p class="price"> £40.00 </p>
+                    <a href="{{ url_for('booking', event_id=7) }}" class="btn"> Book Now </a>
+                </div>
+
+                <div class="event-card">
+                    <img src="{{ url_for('static', filename='images/crochet_workshop.jpg') }}" alt="Crochet Workshop">
+                    <h3> Crochet Workshop </h3>
+                    <p> Learn the art of crochet in this relaxing workshop where you can create your own cozy items! </p>
+                    <p class="price"> Free </p>
+                    <a href="{{ url_for('booking', event_id=8) }}" class="btn"> Book Now </a>
+                </div>
+
+                <div class="event-card">
+                    <img src="{{ url_for('static', filename='images/embroidery_workshop.jpg') }}" alt="Embroidery Workshop">
+                    <h3> Embroidery Workshop </h3>
+                    <p> Are you ready to explore the art of embroidery? Join us for a creative workshop where you can learn various stitching techniques and create your own beautiful designs! </p>
+                    <p class="price"> Free </p>
+                    <a href="{{ url_for('booking', event_id=9) }}" class="btn"> Book Now </a>
+                </div>
+
+                {% for event in events %}
+                <div class="event-card">
+                    <img src="{{ url_for('static', filename='images/' + event.ImageURL) }}" alt="{{ event.EventName }}">
+
+                    <h3>{{ event.EventName }}</h3>
+                    <p>{{ event.Description }}</p>
+
+                    {% if event.Price == 0 %}
+                        <p class="price"> Free </p>
+                    {% else %}
+                        <p class="price">£{{ event.Price }}</p>
+                    {% endif %}
+
+                    <a href="{{ url_for('booking', event_id=event.EventID) }}" class="btn"> Book Now </a>
+                </div>
+                {% endfor %}
+                
+            </section>
+        </main>
+
+        <footer>
+            <p> &copy; Bristol Community Event Project by Thiri Win &hearts; </p>
+        </footer>
+    </body>
+</html>

@@ -1,0 +1,291 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body */
+body {
+    font-family: 'Poppins', Arial, sans-serif;
+    background-color: rgba(191, 17, 191, 0.664);
+    color: #2c3e50;
+    line-height: 1.6;
+}
+
+/* Header */
+header {
+    background-color: #ffffff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.8rem 1.5rem;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+/* Logo */
+header .logo {
+    display: inline-flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 10px;
+    white-space: nowrap;
+}
+
+header .logo img {
+    height: 100px;
+    width: 100px;
+    margin: 0;
+}
+
+header h2 {
+    font-size: 1.3rem;
+    color: #2c3e50;
+    margin: 0;
+    line-height: 1;
+}
+
+/* Navigation */
+nav a {
+    text-decoration: none;
+    color: #333;
+    margin-left: 20px;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+nav a:hover {
+    color: hsl(302, 100%, 50%);
+}
+
+nav a.event {
+    color: hsl(302, 100%, 50%);
+}
+
+/* Intro Section */
+.intro {
+    background: linear-gradient(
+        135deg,
+        rgba(191, 17, 191, 0.6),
+        rgba(169, 7, 169, 0.8)
+    );
+    color: white;
+    text-align: center;
+    padding: 5rem 1rem;
+}
+
+.intro-content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.intro h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.intro p {
+    font-size: 1.2rem;
+    max-width: 700px;
+    margin: 0 auto 2rem;
+}
+
+/* Buttons */
+.btn {
+    background-color: hsl(302, 100%, 50%);
+    color: #fffaf0;
+    padding: 0.8rem 1.5rem;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.btn:hover {
+    background-color: rgba(169, 7, 169, 0.8);
+    transform: scale(1.05);
+}
+
+/* About Section */
+.about-home {
+    text-align: center;
+    padding: 3rem 1.5rem;
+    max-width: 900px;
+    margin: auto;
+    color: #fffaf0;
+}
+
+.about-home h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: #2c3e50;
+}
+
+/* Featured Events */
+.featured-events {
+    text-align: center;
+    padding: 3rem 1.5rem;
+    background-color: #ffffff;
+}
+
+.featured-events h2 {
+    color: #2c3e50;
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+/* Event Grid */
+.event-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    max-width: 1000px;
+    margin: 0 auto 2.5rem;
+    justify-items: center;
+}
+
+/* Event Card */
+.event-card {
+    background: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.2s, box-shadow 0.2s;
+    width: 100%;
+    max-width: 320px;
+}
+
+.event-card:hover {
+    transform: translateY(-6px) scale(1.02);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.event-card img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+}
+
+.event-card h3 {
+    font-size: 1.1rem;
+    color: #2c3e50;
+    margin: 1rem;
+}
+
+.event-card p {
+    color: #666;
+    font-size: 0.95rem;
+    margin: 0 1rem 1rem;
+}
+
+/* More Button */
+.more-btn {
+    margin-top: 2rem;
+    display: inline-block;
+}
+
+/* Membership Section */
+.membership-offer {
+    text-align: center;
+    padding: 3rem 1.5rem;
+    background: #fffaf0;
+    border-top: 3px solid rgba(191, 17, 191, 0.6);
+}
+
+.membership-offer h2 {
+    color: #2c3e50;
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.membership-offer p {
+    color: #2c3e50;
+    max-width: 800px;
+    margin: 0 auto 2rem;
+    font-size: 1.1rem;
+    line-height: 1.6;
+}
+
+/* Register Button */
+.register-btn {
+    background-color: hsl(302, 100%, 50%);
+    color: #fffaf0;
+    padding: 0.8rem 1.8rem;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    display: inline-block;
+}
+
+.register-btn:hover {
+    background-color: rgba(169, 7, 169, 0.8);
+    transform: scale(1.05);
+}
+
+/* Footer */
+footer {
+    background-color: #ffffff;
+    text-align: center;
+    padding: 1.2rem;
+    margin-top: 2rem;
+    box-shadow: 0 -2px 6px rgba(0, 0, 0, 0.05);
+    font-size: 0.9rem;
+    color: #555;
+}
+
+/* Responsive Design */
+
+/* Tablet */
+@media only screen and (min-width: 600px) {
+    header {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    nav {
+        margin-top: 0.5rem;
+    }
+
+    nav a {
+        display: inline-block;
+        margin: 0.3rem 0.6rem;
+    }
+
+    .intro h1 {
+        font-size: 2.2rem;
+    }
+}
+
+/* Medium screens */
+@media only screen and (min-width: 768px) {
+    header {
+        flex-direction: row;
+    }
+
+    .intro h1 {
+        font-size: 2.6rem;
+    }
+}
+
+/* Large screens */
+@media only screen and (min-width: 992px) {
+    .intro h1 {
+        font-size: 3rem;
+    }
+}
+
+/* Extra large screens */
+@media only screen and (min-width: 1200px) {
+    .intro {
+        padding: 6rem 2rem;
+    }
+
+    .intro h1 {
+        font-size: 3.2rem;
+    }
+}

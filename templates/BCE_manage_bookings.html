@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title> Manage Bookings </title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/BCE_admin.css') }}">
+    </head>
+
+    <body>
+        <header>
+            <div class="logo">
+                <img src="{{ url_for('static', filename='images/BCE_logo.png') }}" alt="BCE Logo">
+                <h2> Bristol Community Events Admin </h2>
+            </div>
+
+            <nav>
+                <a href="{{ url_for('admin') }}"> Dashboard </a>
+                <a href="{{ url_for('manage_users') }}"> Manage Users </a>
+                <a href="{{ url_for('manage_bookings') }}" class="event"> Manage Bookings </a>
+                <a href="{{ url_for('manage_messages') }}"> Manage Messages </a>
+                <a href="{{ url_for('logout') }}"> Logout </a>
+            </nav>
+        </header>
+
+        <main>
+            <section class="page-header">
+                <h1> Manage Bookings </h1>
+                <p> View workshop bookings records. </p>
+            </section>
+
+            <div class="container">
+                {% if bookings %}
+                <div class="table-wrapper">
+                    <table class="admin-table">
+                        <tr>
+                            <th> Booking ID </th>
+                            <th> User ID </th>
+                            <th> Workshop </th>
+                            <th> Booked </th>
+                            <th> Status </th>
+                            <th> Amount </th>
+                        </tr>
+
+                        {% for booking in bookings %}
+                        <tr>
+                            <td>{{ booking.BookingID }}</td>
+                            <td>{{ booking.UserID }}</td>
+                            <td>{{ booking.EventName }}</td>
+                            <td>{{ booking.BookingDate }}</td>
+                            <td class="{% if booking.BookingStatus == 'Cancelled' %}cancelled-status{% else %}confirmed-status{% endif %}">
+                                {{ booking.BookingStatus }}
+                            </td>
+                            <td>£{{ booking.FinalAmount }}</td>
+                        </tr>
+                        {% endfor %}
+                    </table>
+                </div>
+                {% else %}
+                    <p> No bookings found. </p>
+                {% endif %}
+
+                <div class="admin-links">
+                    <a href="{{ url_for('manage_messages') }}" class="admin-btn"> Go to Manage Messages </a>
+                </div>
+            </div>
+        </main>
+
+        <footer>
+            <p> &copy; Bristol Community Event Project by Thiri Win &hearts; </p>
+        </footer>
+    </body>
+</html>

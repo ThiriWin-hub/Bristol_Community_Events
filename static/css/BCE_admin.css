@@ -1,0 +1,288 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', Arial, sans-serif;
+    background-color: rgba(191, 17, 191, 0.664);
+    color: #2c3e50;
+    line-height: 1.6;
+}
+
+header {
+    background-color: #ffffff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.8rem 1.5rem;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+html, body {
+    min-height: 100%;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+main {
+    flex: 1;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.logo img {
+    height: 80px;
+    width: 80px;
+}
+
+nav a {
+    text-decoration: none;
+    color: #333;
+    margin-left: 20px;
+    font-weight: 500;
+}
+
+nav a:hover,
+nav a.event {
+    color: hsl(302, 100%, 50%);
+}
+
+.page-header {
+    text-align: center;
+    padding: 1.5rem 1rem;
+}
+
+.page-header h1 {
+    font-size: 2.3rem;
+}
+
+.page-header p {
+    color: #fffaf0;
+    font-size: 1.1rem;
+}
+
+.container {
+    background-color: #f2f2f2;
+    border-radius: 10px;
+    padding: 2rem;
+    max-width: 1200px;
+    width: 92%;
+    margin: 2rem auto;
+    box-shadow: 0 3px 20px rgba(0, 0, 0, 0.15);
+}
+
+.container h2 {
+    margin-bottom: 1rem;
+}
+
+.table-wrapper {
+    overflow-x: auto;
+}
+
+.admin-table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #ffffff;
+}
+
+.admin-table th,
+.admin-table td {
+    border: 1px solid #ddd;
+    padding: 12px;
+    text-align: center;
+}
+
+.admin-table th {
+    background-color: rgba(191, 17, 191, 0.8);
+    color: #fffaf0;
+}
+
+.admin-table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.admin-table tr:hover {
+    background-color: #f3e5f5;
+}
+
+.admin-form label {
+    display: block;
+    font-weight: 600;
+    margin-top: 1rem;
+}
+
+.admin-form input,
+.admin-form textarea {
+    width: 100%;
+    padding: 12px;
+    margin-top: 0.4rem;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 1rem;
+}
+
+.admin-form textarea {
+    min-height: 100px;
+}
+
+.admin-form input[type="submit"] {
+    margin-top: 1.2rem;
+    background-color: hsl(302, 100%, 50%);
+    color: #fffaf0;
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.admin-links {
+    display: flex;
+    gap: 15px;
+    margin-top: 2rem;
+    flex-wrap: wrap;
+}
+
+.admin-btn {
+    background-color: hsl(302, 100%, 50%);
+    color: #fffaf0;
+    text-decoration: none;
+    padding: 12px 20px;
+    border-radius: 8px;
+    font-weight: 600;
+}
+
+.admin-btn:hover {
+    background-color: rgba(169, 7, 169, 0.9);
+}
+
+.cancelled-status {
+    color: #c0392b;
+    font-weight: 600;
+}
+
+.confirmed-status {
+    color: #27ae60;
+    font-weight: 600;
+}
+
+.success-message {
+    background-color: #d4edda;
+    color: #155724;
+    padding: 12px;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+    font-weight: 600;
+}
+
+footer {
+    background-color: #ffffff;
+    text-align: center;
+    padding: 1.2rem;
+    margin-top: 2rem;
+    color: #555;
+}
+
+/* Responsive Design */
+@media only screen and (max-width: 767px) {
+    header {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        padding: 1rem;
+    }
+
+    .logo {
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .logo img {
+        height: 80px;
+        width: 80px;
+    }
+
+    .logo h2 {
+        font-size: 1.3rem;
+        line-height: 1.3;
+    }
+
+    nav {
+        margin-top: 0.8rem;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+    }
+
+    nav a {
+        margin-left: 0;
+        font-size: 1rem;
+    }
+
+    .page-header h1 {
+        font-size: 1.9rem;
+    }
+
+    .container {
+        width: 92%;
+        padding: 1.5rem;
+    }
+
+    .admin-table th,
+    .admin-table td {
+        padding: 10px;
+        font-size: 0.9rem;
+    }
+
+    .admin-links {
+        flex-direction: column;
+    }
+
+    .admin-btn {
+        text-align: center;
+    }
+
+    .container {
+        width: 92%;
+        padding: 1.5rem;
+        overflow: hidden;
+    }
+
+    .admin-table {
+        min-width: 600px;
+    }
+
+    .admin-table th,
+    .admin-table td {
+        padding: 10px;
+        font-size: 0.85rem;
+        white-space: normal;
+        word-break: break-word;
+    }
+
+    .table-wrapper {
+        width: 100%;
+        overflow-x: auto;
+        padding-bottom: 0.5rem;
+    }
+
+    .admin-links {
+        flex-direction: column;
+    }
+
+    .admin-btn {
+        text-align: center;
+    }
+}

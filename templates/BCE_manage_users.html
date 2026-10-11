@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title> Manage Users </title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/BCE_admin.css') }}">
+    </head>
+
+    <body>
+        <header>
+            <div class="logo">
+                <img src="{{ url_for('static', filename='images/BCE_logo.png') }}" alt="BCE Logo">
+                <h2> Bristol Community Events Admin </h2>
+            </div>
+
+            <nav>
+                <a href="{{ url_for('admin') }}"> Dashboard </a>
+                <a href="{{ url_for('manage_users') }}" class="event"> Manage Users </a>
+                <a href="{{ url_for('manage_bookings') }}"> Manage Bookings </a>
+                <a href="{{ url_for('manage_messages') }}"> Manage Messages </a>
+                <a href="{{ url_for('logout') }}"> Logout </a>
+            </nav>
+        </header>
+
+        <main>
+            <section class="page-header">
+                <h1> Manage Users </h1>
+                <p> View registered users. </p>
+            </section>
+
+            <div class="container">
+                {% if users %}
+                <div class="table-wrapper">
+                    <table class="admin-table">
+                        <tr>
+                            <th> User ID </th>
+                            <th> First Name </th>
+                            <th> Last Name </th>
+                            <th> Email </th>
+                            <th> Registered </th>
+                        </tr>
+
+                        {% for user in users %}
+                        <tr>
+                            <td>{{ user.UserID }}</td>
+                            <td>{{ user.FirstName }}</td>
+                            <td>{{ user.LastName }}</td>
+                            <td>{{ user.Email }}</td>
+                            <td>{{ user.DateRegistered.strftime('%Y-%m-%d') }}</td>
+                        </tr>
+                        {% endfor %}
+                    </table>
+                </div>
+                {% else %}
+                    <p> No users found. </p>
+                {% endif %}
+
+                <div class="admin-links">
+                    <a href="{{ url_for('manage_bookings') }}" class="admin-btn"> Go to Manage Bookings </a>
+                </div>
+            </div>
+        </main>
+
+        <footer>
+            <p> &copy; Bristol Community Event Project by Thiri Win &hearts; </p>
+        </footer>
+    </body>
+</html>

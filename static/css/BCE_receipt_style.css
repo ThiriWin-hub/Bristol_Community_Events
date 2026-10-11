@@ -1,0 +1,145 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', Arial, sans-serif;
+    background: linear-gradient(135deg,rgba(191, 17, 191, 0.664), #8e44ad);
+    color: #2c3e50;
+    line-height: 1.6;
+}
+
+header {
+    background-color: #ffffff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.8rem 1.5rem;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.logo img {
+    height: 80px;
+    width: 80px;
+}
+
+nav a {
+    text-decoration: none;
+    color: #333;
+    margin-left: 20px;
+    font-weight: 500;
+}
+
+nav a:hover {
+    color: hsl(302, 100%, 50%);
+}
+
+.page-header {
+    text-align: center;
+    margin: 1.5rem 1.5rem;
+    color: #fffaf0;
+}
+
+.page-header h1 {
+    font-size: 2.4rem;
+    color: #2c3e50;
+}
+
+.receipt-container {
+    background-color: #ffffff;
+    max-width: 600px;
+    width: 90%;
+    margin: 2rem auto;
+    padding: 2rem 2.5rem;
+    border-radius: 14px;
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
+}
+
+.receipt-container h2 {
+    margin-bottom: 1rem;
+}
+
+.receipt-container p {
+    margin-bottom: 0.8rem;
+    font-size: 1rem;
+}
+
+.btn {
+    display: inline-block;
+    margin-top: 1rem;
+    background-color: rgba(191, 17, 191, 0.8);
+    color: #fffaf0;
+    padding: 12px 20px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.btn:hover {
+    background-color: rgba(169, 7, 169, 0.9);
+}
+
+footer {
+    background-color: #ffffff;
+    text-align: center;
+    padding: 1.2rem;
+    margin-top: 2rem;
+    color: #555;
+}
+
+/* Responsive Design */
+@media only screen and (max-width: 767px) {
+    header {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        padding: 1rem;
+    }
+
+    .logo {
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .logo img {
+        height: 80px;
+        width: 80px;
+    }
+
+    .logo h2 {
+        font-size: 1.3rem;
+    }
+
+    nav {
+        margin-top: 0.8rem;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+    }
+
+    nav a {
+        margin-left: 0;
+        font-size: 1rem;
+    }
+
+    .page-header h1 {
+        font-size: 2rem;
+    }
+
+    .receipt-container {
+        width: 92%;
+        padding: 1.5rem;
+    }
+}

@@ -1,0 +1,9 @@
+for admin account 
+admin@gmail.com
+Password: admin
+
+for user account
+a@gmail.com psw: a
+b@gmail.com psw: b
+c@gmail.com psw: c
+h@gmail.com psw: h

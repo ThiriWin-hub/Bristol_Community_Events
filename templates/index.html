@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Bristol Community Events | Home</title>
+      <link rel="stylesheet" href="{{ url_for('static', filename='css/BCE_index_style.css') }}">
+  </head>
+
+  <body>
+      <!-- Header -->
+      <header>
+          <div class="logo">
+              <img src="{{ url_for('static', filename='images/BCE_logo.png') }}" alt="BCE Logo">
+              <h2>Bristol Community Events</h2>
+          </div>
+
+          <nav>
+              <a href="{{ url_for('home') }}" class="event"> Home </a>
+              <a href="{{ url_for('events') }}"> Workshops </a>
+              <a href="{{ url_for('about') }}"> About </a>
+              <a href="{{ url_for('contact') }}"> Contact </a>
+              {% if session.get('user_id') %}
+                <a href="{{ url_for('logout') }}"> Logout </a>
+              {% else %}
+                <a href="{{ url_for('login') }}"> Login </a>
+              {% endif %}
+          </nav>
+      </header>
+
+      <!-- Intro Section -->
+      <section class="intro">
+          <div class="intro-content">
+              <h1>Welcome to Bristol Community Events</h1>
+              <p>Explore workshops, choose your date and book your place easily.</p>
+              <a href="{{ url_for('events') }}" class="btn">Explore All Workshops</a>
+          </div>
+      </section>
+
+      <!-- About Section -->
+      <section class="about-home">
+          <h2>Discover. Create. Connect.</h2>
+          <p>
+              Bristol Community Events (BCE) connects people through art, craft, and skill-based workshops.
+              Whether you’re a beginner or experienced creator, our community has something inspiring for everyone.
+          </p>
+      </section>
+
+      <!-- Featured Workshops -->
+      <section class="featured-events">
+          <h2>Featured Workshops</h2>
+          <div class="event-grid">
+              <div class="event-card">
+                  <img src="{{ url_for('static', filename='images/drawing_workshop.jpg') }}" alt="Drawing Workshop">
+                  <h3>Drawing Workshop</h3>
+                  <p>Unleash your creativity and learn the art of sketching and shading in our guided drawing sessions.</p>
+              </div>
+
+              <div class="event-card">
+                  <img src="{{ url_for('static', filename='images/pottery_workshop.jpg') }}" alt="Pottery Workshop">
+                  <h3>Pottery Workshop</h3>
+                  <p>Get your hands dirty and craft your own ceramic masterpiece in this fun, hands-on experience.</p>
+              </div>
+          </div>
+
+          <a href="{{ url_for('events') }}" class="btn more-btn">View More Workshops</a>
+      </section>
+
+      <!-- Membership Offer Section -->
+      <section class="membership-offer">
+          <h2>🎁 Become a Member and Get a Free Workshop!</h2>
+          <p>
+              When you register for <strong> any workshop</strong>, you’ll receive <strong>exclusive access</strong> 
+              to one of our free creative sessions — such as the <em>Crochet Workshop</em> or <em>Embroidery Workshop</em>!
+          </p>
+
+          <div class="event-grid">
+              <div class="event-card">
+                  <img src="{{ url_for('static', filename='images/crochet_workshop.jpg') }}" alt="Crochet Workshop">
+                  <h3>Crochet Workshop</h3>
+                  <p>Learn the relaxing art of crochet — a fun and cozy skill for all ages.</p>
+              </div>
+
+              <div class="event-card">
+                  <img src="{{ url_for('static', filename='images/embroidery_workshop.jpg') }}" alt="Embroidery Workshop">
+                  <h3>Embroidery Workshop</h3>
+                  <p>Discover embroidery patterns and techniques to create your own stitched artwork.</p>
+              </div>
+          </div>
+          
+          {% if not session.get('user_id') %}
+            <a href="{{ url_for('register') }}" class="btn register-btn">Register Now to Unlock Your Free Workshop</a>
+          {% elif has_paid_booking %}
+            <a href="{{ url_for('events') }}" class="btn more-btn">Book Your Free Workshop Now</a>
+          {% else %}
+            <a href="{{ url_for('events') }}" class="btn more-btn">Unlock Your Free Workshop by Booking a Paid Workshop</a>
+          {% endif %}
+      </section>
+
+      <!-- Footer -->
+      <footer>
+          <p>&copy; Bristol Community Event Project by Thiri Win &hearts;</p>
+      </footer>
+  </body>
+</html>
